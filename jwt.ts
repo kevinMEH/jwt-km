@@ -66,20 +66,6 @@ class JWT {
         return this.payload[claimName];
     }
     
-    /**
-     * Given a claim, verify that the claim is provided does not override an
-     * important subset of reserved claims, specifically "iss", "exp", and "iat".
-     * 
-     * Useful for when you are setting user supplied claims and don't want to
-     * override important claim attributes.
-     * 
-     * @param claim 
-     * @returns 
-     */
-    static isReserved(claim: string): boolean {
-        return this.reservedClaims.includes(claim);
-    }
-    
     getToken(secret: string): string {
         if(!(/^[a-fA-F0-9]+$/.test(secret))) {
             throw new Error("Secret must be a hex string. (No 0x)");
@@ -90,8 +76,6 @@ class JWT {
         const signature = hmac.digest("base64url");
         return body + "." + signature;
     }
-
-    static reservedClaims = ["iss", "exp", "iat"];
     
     /**
      * Given a token and a secret, checks if the token is consistent.
