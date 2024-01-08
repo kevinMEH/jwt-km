@@ -26,8 +26,8 @@ class JWT {
      * timestamp (exp), and the issuing unix timestamp (iat).
      * 
      * It is recommended that the issuer and the expiration timestamp is provided.
-     * If the issuing timestamp is not provided, it will be set to the current
-     * unix timestamp.
+     * If the issuing timestamp is not provided, but the issuer and expiration
+     * is provided, then it is automatically set to the current time.
      * 
      * @param issuer 
      * @param expiration 
