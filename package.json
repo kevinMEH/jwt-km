@@ -1,0 +1,33 @@
+{
+  "name": "jwt-km",
+  "version": "1.0.0",
+  "description": "A simple and intuitive JSON Web Token (JWT) package.",
+  "main": "jwt.js",
+  "type": "module",
+  "scripts": {
+    "test": "npx tsc && node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinMEH/jwt-km.git"
+  },
+  "keywords": [
+    "json",
+    "web",
+    "token",
+    "tokens",
+    "jwt",
+    "node",
+    "nodejs"
+  ],
+  "author": "kevinMEH",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/kevinMEH/jwt-km/issues"
+  },
+  "homepage": "https://github.com/kevinMEH/jwt-km#readme",
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  }
+}
