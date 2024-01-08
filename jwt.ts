@@ -172,7 +172,7 @@ class JWT {
         if(header.exp === undefined) {
             return true;
         }
-        return unixTime() < header.exp;
+        return unixTime() > header.exp;
     }
 }
 
