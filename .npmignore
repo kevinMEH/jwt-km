@@ -1,5 +1,12 @@
 node_modules
 .gitignore
-test.js
-*.ts
 tsconfig.json
+
+*.ts
+!*.d.ts
+
+test.js
+test.d.ts
+
+package
+*.tgz
