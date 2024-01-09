@@ -1,6 +1,11 @@
 # jwt-km
 
-jwt-km is a simple and intuitive JSON Web Token (JWT) package.
+jwt-km is a simple and intuitive JSON Web Token (JWT) package for NodeJS.
+
+To install jwt-km, run the following command:
+```
+npm install jwt-km
+```
 
 ## Features
 - Single file implementation
