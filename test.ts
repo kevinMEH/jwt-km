@@ -92,6 +92,12 @@ test("JWT.expired() tests", () => {
 
     assert(JWT.expired(expiredToken, secret));
     
+    const malformed = new JWT("liao.gg");
+    malformed.addClaim("exp", "asdfasdfasdf");
+    const malformedToken = malformed.getToken(secret);
+    
+    assert(JWT.expired(malformedToken, secret));
+    
     const valid = new JWT("liao.gg", unixTime() + 24 * 60 * 60); // Expires in 1 day
     valid.addClaim("someClaim", true);
     const validToken = valid.getToken(secret);
