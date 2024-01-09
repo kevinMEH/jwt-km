@@ -1,3 +1,5 @@
+// https://github.com/kevinMEH/jwt-km
+
 import { createHmac } from "crypto";
 
 export type Header = {
@@ -101,32 +103,7 @@ class JWT {
         const signature = hmac.digest("base64url");
         return signature === parts[2];
     }
-    
-    /**
-     * Given a valid token, unwraps the token and returns the Header and Payload
-     * object.
-     * 
-     * If the token is invalid, null is returned.
-     * 
-     * Notes:
-     * Header and payload structure will not be verified.
-     * Expirations will not be checked.
-     * 
-     * @param token 
-     * @param secret Must be hex string
-     * @returns [Header, Payload] | null
-     */
-    static unwrap(token: string, secret: string): [Header, Payload] | null {
-        if(!JWT.verify(token, secret)) {
-            return null;
-        }
-        const parts = token.split(".");
-        // After verification, we can guarantee that the token was indeed issued
-        // by us. Thus, we can guarantee that the token represents a valid JSON
-        // string, and can be parsed into an object.
-        return [ objectFromBase64(parts[0]) as Header, objectFromBase64(parts[1]) as Payload ];
-    }
-    
+
     /**
      * Given a valid token, returns a new JWT object based on the token.
      * 
@@ -152,6 +129,31 @@ class JWT {
         }
         return result;
     }
+        
+    /**
+     * Given a valid token, unwraps the token and returns the Header and Payload
+     * object.
+     * 
+     * If the token is invalid, null is returned.
+     * 
+     * Notes:
+     * Header and payload structure will not be verified.
+     * Expirations will not be checked.
+     * 
+     * @param token 
+     * @param secret Must be hex string
+     * @returns [Header, Payload] | null
+     */
+     static unwrap(token: string, secret: string): [Header, Payload] | null {
+        if(!JWT.verify(token, secret)) {
+            return null;
+        }
+        const parts = token.split(".");
+        // After verification, we can guarantee that the token was indeed issued
+        // by us. Thus, we can guarantee that the token represents a valid JSON
+        // string, and can be parsed into an object.
+        return [ objectFromBase64(parts[0]) as Header, objectFromBase64(parts[1]) as Payload ];
+    }
     
     /**
      * Checks if a token is expired.
@@ -169,7 +171,7 @@ class JWT {
         }
         const parts = token.split(".");
         const header = objectFromBase64(parts[1]) as Payload;
-        if(header.exp === undefined) {
+        if(header.exp === undefined || typeof header.exp !== "number") {
             return true;
         }
         return unixTime() > header.exp;
@@ -204,6 +206,6 @@ function objectFromBase64(string: string): object {
  */
 export function unixTime() {
     return Math.floor(Date.now() / 1000);
-};
+}
 
 export default JWT;
