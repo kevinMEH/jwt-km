@@ -81,6 +81,7 @@ test("JWT.fromToken() tests", () => {
     assert(recovered.getClaim("iss") === "liao.gg");
     assert(recovered.getClaim("exp") === 3600);
     assert(recovered.getClaim("claim") === 123);
+    assert(recovered.getToken(secret) === token);
 });
 
 test("JWT.expired() tests", () => {

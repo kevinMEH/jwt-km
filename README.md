@@ -47,13 +47,13 @@ Note: In the section below, `liao.gg` refers to the issuer's name or domain, whi
 
 ---
 
-To create a token, create a new instance of the `JWT` class:
+To create a token, create a new instance of the `JWT` class: It is strongly recommended that you provide the issuer and expiration timestamp parameter in the constructor.
 
 ```javascript
 // Supply the issuer (iss) and token expiration timestamp (exp)
 const jwt = new JWT("liao.gg", unixTime() + 60 * 60); // Expires in 1 hour, or 60 * 60 seconds
 
-// Optionally, you can create an empty token by providing no arguments.
+// Optionally, you can create an empty token by providing no arguments. (Not recommended)
 const emptyJwt = new JWT();
 ```
 

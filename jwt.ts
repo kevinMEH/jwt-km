@@ -8,9 +8,9 @@ export type Header = {
 };
 
 export type Payload = {
-    iss?: string,
-    exp?: number,
-    iat?: number,
+    iss: string,
+    exp: number,
+    iat: number,
     [key: string]: any
 };
 
