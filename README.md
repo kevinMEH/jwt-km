@@ -20,9 +20,8 @@ npm install jwt-km
 - Extremely easy to use
   - Simple and modern implementation
     - Everything is encapsulated in the `JWT` class.
-    - There is only 7 methods to remember
+    - There are only 7 methods to remember
   - Zero error handling
-    - The only error is for an invalid secret key.
     - Once the secret key is correctly setup, all the error handling is built into the methods.
   - Fully synchronous
     - No working with Promises or callbacks.
