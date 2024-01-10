@@ -195,7 +195,7 @@ const goodSecret = `0D9C1749A81DC9B132CE922A2F6CA6F6C873EB65BFF127004468F50E5090
 
 The *maximum* length of the secret key is 512 bits, or 128 hexes long.
 
-In actuality, you can provide a secret longer than this, but because the maximum key size for the HS256 algorithm is 64 bytes, any key that is longer will be hashed and it's hash will be used instead. Since we are using HS256, this actually results in a less secure key being used, as the hashed output of the key will be 256 bits, or only 64 hexes long.
+In actuality, you can provide a secret longer than this, but because the maximum key size for the HS256 algorithm is 512 bits, any key that is longer will be hashed and its hash will be used instead. Since we are using HS256, this actually results in a less secure key being used, as the hashed output of the key will be 256 bits, or only 64 hexes long.
 
 ```javascript
 const maximallySecureSecret     = `0B667742CC78EFFCEB2050131334EEF9A9442603998BF744B62F1C3665EDBE31F7FF052FF64AAFCCD552CCDA25885567646DFE7220BBC15EE937122089825739`;
